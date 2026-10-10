@@ -3,6 +3,5 @@ node_modules/
 *.tsbuildinfo
 coverage/
 .env*
-!.env.example
 *.log
 dist/
