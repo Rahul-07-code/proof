@@ -1,0 +1,1 @@
+import {NextResponse} from 'next/server';import {cookies} from 'next/headers';export async function POST(){(await cookies()).set('privacy_consent','privacy-v1',{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',maxAge:600,path:'/'});return NextResponse.redirect(new URL('/api/auth/github',process.env.APP_BASE_URL??'http://localhost:3000'),303)}

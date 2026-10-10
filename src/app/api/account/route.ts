@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {requireUser} from '@/lib/auth';import {db} from '@/lib/db';import {cookies} from 'next/headers';
+export async function DELETE(){try{const user=await requireUser();await db.query('DELETE FROM users WHERE id=$1',[user]);const jar=await cookies();jar.delete('pos_session');jar.delete('privacy_consent');return NextResponse.json({deleted:true})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:'Unable to delete account.'},{status:e instanceof Error&&e.message==='UNAUTHENTICATED'?401:500})}}

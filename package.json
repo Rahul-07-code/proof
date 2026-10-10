@@ -1,0 +1,8 @@
+{
+  "name": "proof-of-skill",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"dev":"next dev","build":"next build","start":"next start","lint":"eslint src scripts tests next.config.ts eslint.config.mjs","typecheck":"tsc --noEmit","test":"vitest run --pool=threads --poolOptions.threads.singleThread","db:migrate":"tsx scripts/migrate.ts"},
+  "dependencies": {"@octokit/rest":"^21.1.1","bcryptjs":"^2.4.3","cookie":"^0.7.2","jose":"^5.9.6","next":"^15.1.0","pdf-parse":"^1.1.1","pg":"^8.13.1","react":"^19.0.0","react-dom":"^19.0.0","zod":"^3.24.1"},
+  "devDependencies": {"@types/node":"^22.10.2","@types/pg":"^8.11.10","@types/react":"^19.0.2","@types/react-dom":"^19.0.2","eslint":"^9.17.0","eslint-config-next":"^15.1.0","tsx":"^4.19.2","typescript":"^5.7.2","vitest":"^2.1.8"}
+}

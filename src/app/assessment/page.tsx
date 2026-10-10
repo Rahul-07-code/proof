@@ -1,0 +1,1 @@
+import Workspace from '../workspace';export default async function Page({searchParams}:{searchParams:Promise<{requestId?:string}>}){const {requestId}=await searchParams;return <Workspace kind="assessment" requestId={requestId}/>}

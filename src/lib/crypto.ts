@@ -1,0 +1,4 @@
+import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
+function encryptionKey() { const key = process.env.GITHUB_TOKEN_ENCRYPTION_KEY ?? ''; if (!/^[a-f0-9]{64}$/i.test(key)) throw new Error('GITHUB_TOKEN_ENCRYPTION_KEY must be a 32-byte hex key.'); return Buffer.from(key, 'hex'); }
+export function encrypt(value: string) { const iv = randomBytes(12); const cipher = createCipheriv('aes-256-gcm', encryptionKey(), iv); const body = Buffer.concat([cipher.update(value, 'utf8'), cipher.final()]); return `${iv.toString('hex')}.${cipher.getAuthTag().toString('hex')}.${body.toString('hex')}`; }
+export function decrypt(value: string) { const [iv, tag, body] = value.split('.'); const decipher = createDecipheriv('aes-256-gcm', encryptionKey(), Buffer.from(iv, 'hex')); decipher.setAuthTag(Buffer.from(tag, 'hex')); return Buffer.concat([decipher.update(Buffer.from(body, 'hex')), decipher.final()]).toString('utf8'); }

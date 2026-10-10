@@ -1,0 +1,2 @@
+export default async function PublicPassport({params}:{params:Promise<{token:string}>}){const {token}=await params;return <main><nav><a className="brand" href="/">Proof-of-Skill</a><span>Public skill passport</span></nav><section className="workspace"><div className="eyebrow">SHARED RECORD</div><h2>Inspect the evidence</h2><p>This passport is privacy-controlled and can be revoked by its owner.</p><Passport token={token}/></section></main>}
+import Passport from './passport';

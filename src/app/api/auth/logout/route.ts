@@ -1,0 +1,1 @@
+import { NextResponse } from 'next/server';import { cookies } from 'next/headers';export async function POST(){(await cookies()).delete('pos_session');return NextResponse.redirect(new URL('/',process.env.APP_BASE_URL??'http://localhost:3000'))}
